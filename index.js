@@ -2,7 +2,7 @@ const button = document.querySelector('button.greeting')
 
 function changeText(ev) {
     
-    ev.target.textContent = 'Clickity Click'
+    document.querySelector('h1').textContent = 'You changed the first heading text'
 
 }
 
