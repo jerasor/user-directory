@@ -2,7 +2,7 @@ const button = document.querySelector('button.greeting')
 
 function changeText(ev) {
     
-    document.querySelector('h1').textContent = 'You changed the first heading text'
+    document.querySelector('#secondHeading').textContent = 'You changed the second heading text'
 
 }
 
