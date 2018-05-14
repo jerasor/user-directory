@@ -1,10 +1,8 @@
 const button = document.querySelector('button.greeting')
 
-function changeText() {
+function changeText(ev) {
     
-    const greetingParagraph = document.querySelector('p.greeting')
-
-    greetingParagraph.textContent = 'You done clicked!'
+    ev.target.textContent = 'Clickity Click'
 
 }
 
