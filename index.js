@@ -28,6 +28,9 @@ function changeTextCustom(ev) {
     //prevents the form from being submitted
     ev.preventDefault()
 
+    //resetting the form after submission
+    ev.target.reset()
+
 }
 
 //adding click event listener to the default 
