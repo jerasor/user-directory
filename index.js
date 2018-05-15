@@ -107,6 +107,23 @@ const renderList = function (name, age, colors) {
 
 }
 
+//adds a color input to the favorite colors
+const addColor = function() {
+    
+    //getting the favoriteColors paragraph (this is the part
+    //of the form where we ask for favorite colors)
+    const colorInput = document.querySelector('#favoriteColorsParagraph')
+
+    //adding another input color to colorInput's children elements
+    const inputColorToAppend = document.createElement('input')
+    inputColorToAppend.setAttribute('type', 'color')
+    inputColorToAppend.setAttribute('name', 'favoriteColors')
+    inputColorToAppend.setAttribute('value', '#000000')
+
+    colorInput.appendChild(inputColorToAppend)
+
+}
+
 //resets the favorite color input label and input
 //to its original html
 const resetFavoriteColors = function(){
@@ -114,10 +131,23 @@ const resetFavoriteColors = function(){
     //getting the favoriteColors paragraph (this is the part
     //of the form where we ask for favorite colors)
     const colorInput = document.querySelector('#favoriteColorsParagraph')
+    
+    //emptying the colorInput of all of its children
+    while (colorInput.hasChildNodes()) {
+        colorInput.removeChild(colorInput.firstChild)
+    }
 
-    //resetting colorInput's innderHTML to its original HTML
-    colorInput.innerHTML = `<label for="favoriteColors">Favorite colors:</label>
-    <input type="color" name="favoriteColors" value="#000000">`
+    //recreating the label for the favorite color input
+    const colorInputLabel = document.createElement('label')
+    colorInputLabel.setAttribute('for', 'favoriteColors')
+    colorInputLabel.textContent = 'Favorite colors:'
+
+    //appending the colorInputLabel to the favorite color input
+    colorInput.appendChild(colorInputLabel)
+
+    //adding a color to the favorite color input
+    addColor()
+
 
 }
 
@@ -151,16 +181,6 @@ const handleSubmit = function(ev) {
 
 //adding a submit event listener to the form
 form.addEventListener('submit', handleSubmit)
-
-const addColor = function() {
-    
-    //getting the favoriteColors paragraph (this is the part
-    //of the form where we ask for favorite colors)
-    const colorInput = document.querySelector('#favoriteColorsParagraph')
-
-    //adding another input color to colorInput's innerHTML
-    colorInput.innerHTML += `\n<input type="color" name="favoriteColors" value="#000000">`
-}
 
 //the add favorite color button
 const addColorButton = document.querySelector('#addFavoriteColor')
