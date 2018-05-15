@@ -69,7 +69,7 @@ const renderList = function (name, age, colors) {
     for (let index = 0; index < colors.length; index++) {
         
         //getting the value of the colors at this index
-        //this should be a color value like #ff5555
+        //this should be a color value like #e18700
         const color = colors[index].value;
 
         //rendering color (now a div element)
@@ -78,8 +78,20 @@ const renderList = function (name, age, colors) {
         
     }
 
+    //if the length of arrayOfDivColors is zero
+    //then there must have only been one
+    //favorite color
+    if (arrayOfDivColors.length === 0) {
+        
+        //so we will set the first spot of
+        //arrayOfDivColors to the rendered color
+        //of the value of that one color
+        arrayOfDivColors[0] = renderColor(colors.value)
+
+    }
+
     //creating color list item
-    const colorItem = renderListItem('Favorite Color: ', arrayOfDivColors)
+    const colorItem = renderListItem('Favorite Colors: ', arrayOfDivColors)
 
     //creating the unorder list
     const list = document.createElement('ul')
@@ -92,6 +104,20 @@ const renderList = function (name, age, colors) {
 
     //returning the list
     return list
+
+}
+
+//resets the favorite color input label and input
+//to its original html
+const resetFavoriteColors = function(){
+
+    //getting the favoriteColors paragraph (this is the part
+    //of the form where we ask for favorite colors)
+    const colorInput = document.querySelector('#favoriteColorsParagraph')
+
+    //resetting colorInput's innderHTML to its original HTML
+    colorInput.innerHTML = `<label for="favoriteColors">Favorite colors:</label>
+    <input type="color" name="favoriteColors" value="#000000">`
 
 }
 
@@ -116,10 +142,28 @@ const handleSubmit = function(ev) {
     const users = document.querySelector('#users')
     users.appendChild(list)
 
-    //resetting the form and focusing on userName
+    //resetting the form and colors and focusing on userName
     f.reset()
+    resetFavoriteColors()
     f.userName.focus()
+    
 }
 
 //adding a submit event listener to the form
 form.addEventListener('submit', handleSubmit)
+
+const addColor = function() {
+    
+    //getting the favoriteColors paragraph (this is the part
+    //of the form where we ask for favorite colors)
+    const colorInput = document.querySelector('#favoriteColorsParagraph')
+
+    //adding another input color to colorInput's innerHTML
+    colorInput.innerHTML += `\n<input type="color" name="favoriteColors" value="#000000">`
+}
+
+//the add favorite color button
+const addColorButton = document.querySelector('#addFavoriteColor')
+
+//we will now listen for when the add color button is clicked
+addColorButton.addEventListener('click', addColor)
