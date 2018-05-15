@@ -51,8 +51,9 @@ const renderListItem = function(text, childrenToAppend) {
 
 }
 
-//creates a list with the list items of name, age and color
-const renderList = function (name, age, color) {
+//creates a list with the list items of name, 
+//age and color (which is an array of input colors)
+const renderList = function (name, age, colors) {
 
     //creating name list item
     const nameItem = renderListItem(`Name: ${name}`)
@@ -60,8 +61,25 @@ const renderList = function (name, age, color) {
     //creating age list item
     const ageItem = renderListItem(`Age: ${age}`)
 
+    //an array which will contain div elements 
+    //with background colors
+    const arrayOfDivColors = []
+
+    //looping through colors
+    for (let index = 0; index < colors.length; index++) {
+        
+        //getting the value of the colors at this index
+        //this should be a color value like #ff5555
+        const color = colors[index].value;
+
+        //rendering color (now a div element)
+        //and adding it to arrayOfDivColors
+        arrayOfDivColors[index] = (renderColor(color))
+        
+    }
+
     //creating color list item
-    const colorItem = renderListItem('Favorite Color: ', [renderColor(color)])
+    const colorItem = renderListItem('Favorite Color: ', arrayOfDivColors)
 
     //creating the unorder list
     const list = document.createElement('ul')
@@ -88,10 +106,10 @@ const handleSubmit = function(ev) {
     //getting the values of the form's input elements
     const userName = f.userName.value
     const age = f.age.value
-    const favoriteColor = f.favoriteColor.value
+    const favoriteColors = f.favoriteColors
 
     //creating the list from the form inputs
-    const list = renderList(userName, age, favoriteColor)
+    const list = renderList(userName, age, favoriteColors)
 
     //adding the list to the html page 
     //(users is an empty div on that page)
