@@ -11,6 +11,21 @@ const renderColor = function(color) {
 
 }
 
+const renderListItem = function(text, childToAppend) {
+
+    const listItem = document.createElement('li')
+    listItem.textContent = text
+
+    if (childToAppend !== undefined) {
+        
+        listItem.appendChild(childToAppend)
+
+    }
+
+    return listItem
+
+}
+
 const handleSubmit = function(ev) {
   ev.preventDefault()
   const f = ev.target
@@ -18,16 +33,11 @@ const handleSubmit = function(ev) {
   const age = f.age.value
   const favoriteColor = f.favoriteColor.value
 
-  const nameItem = document.createElement('li')
-  nameItem.textContent = `Name: ${userName}`
+  const nameItem = renderListItem(`Name: ${userName}`)
 
-  const ageItem = document.createElement('li')
-  ageItem.textContent = `Age: ${age}`
+  const ageItem = renderListItem(`Age: ${age}`)
 
-
-  const colorItem = document.createElement('li')
-  colorItem.textContent = 'Favorite Color: '
-  colorItem.appendChild(renderColor(favoriteColor))
+  const colorItem = renderListItem('Favorite Color: ', renderColor(favoriteColor))
 
   const list = document.createElement('ul')
   list.appendChild(nameItem)
