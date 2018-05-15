@@ -1,6 +1,6 @@
 const button = document.querySelector('button.greeting')
 
-const form = document.querySelector('form')
+const formButton = document.querySelector('#formSubmitButton')
 
 function changeText(ev) {
     
@@ -12,15 +12,12 @@ function changeTextCustom(ev) {
 
     const secondHeading = document.querySelector('#secondHeading')
 
-    const formInputText = ev.target.querySelector('input').value
+    const formInputText = document.querySelector('#textToChange').value
 
     secondHeading.textContent = formInputText
-
-    //this will prevent the submit button from 'refreshing' the page
-    ev.preventDefault()
 
 }
 
 button.addEventListener('click', changeText)
 
-form.addEventListener('submit', changeTextCustom)
+formButton.addEventListener('click', changeTextCustom)
