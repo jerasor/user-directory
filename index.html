@@ -9,23 +9,31 @@
 </head>
 <body>
     
+    <!-- various headings, we only change the text of 
+        the second one, which is why it has an id -->
     <h1>User Directory - 1</h1>
     <h1 id="secondHeading">User Directory - 2</h1>
     <h1>User Directory - 3</h1>
     <h1>User Directory - 4</h1>
 
+    <!-- gretting paragraph -->
     <p class="greeting">Welcome, friend.</p>
 
+    <!-- button which changes second heading's text -->
     <button class="greeting">Change Second Heading Text</button>
 
     <br></br>
 
+    <!-- form which when its submit button is clicked, 
+        will change the second heading's text to whatever was 
+        entered in the input text-->
     <form>
         Change the text of heading 2 to:<br>
         <input type="text" name="textToChange" id="textToChange"><br>
-        <input type="button" name="submitButton" id = "formSubmitButton" value="Submit"><br>
+        <input type="submit" name="submitButton"><br>
     </form>
 
+    <!-- script which handles the button clicking -->
     <script src="index.js"></script>
 
 </body>
