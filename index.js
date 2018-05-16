@@ -108,6 +108,9 @@ const addColor = function() {
     inputColorToAppend.setAttribute('name', 'favoriteColors')
     inputColorToAppend.setAttribute('value', '#000000')
 
+    //creating some space between color inputs
+    inputColorToAppend.style.marginLeft = '.3rem'
+
     colorInput.appendChild(inputColorToAppend)
 
 }
@@ -135,7 +138,6 @@ const resetFavoriteColors = function(){
 
     //adding a color to the favorite color input
     addColor()
-
 
 }
 
