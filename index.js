@@ -78,18 +78,6 @@ const renderList = function (name, age, colors) {
         
     }
 
-    //if the length of arrayOfDivColors is zero
-    //then there must have only been one
-    //favorite color
-    if (arrayOfDivColors.length === 0) {
-        
-        //so we will set the first spot of
-        //arrayOfDivColors to the rendered color
-        //of the value of that one color
-        arrayOfDivColors[0] = renderColor(colors.value)
-
-    }
-
     //creating color list item
     const colorItem = renderListItem('Favorite Colors: ', arrayOfDivColors)
 
@@ -162,7 +150,9 @@ const handleSubmit = function(ev) {
     //getting the values of the form's input elements
     const userName = f.userName.value
     const age = f.age.value
-    const favoriteColors = f.favoriteColors
+
+    //getting all of the inputs with name favoriteColors (this will return a Node list of inputs)
+    const favoriteColors = document.querySelectorAll('input[name="favoriteColors"]')
 
     //creating the list from the form inputs
     const list = renderList(userName, age, favoriteColors)
