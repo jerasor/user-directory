@@ -52,8 +52,10 @@ const renderListItem = function(text, childrenToAppend) {
 }
 
 //creates a list with the list items of name, 
-//age and color (which is an array of input colors)
+//age and color (which is a node list of input colors)
 const renderList = function (name, age, colors) {
+
+    debugger
 
     //creating name list item
     const nameItem = renderListItem(`Name: ${name}`)
@@ -100,9 +102,9 @@ const addColor = function() {
     
     //getting the favoriteColors paragraph (this is the part
     //of the form where we ask for favorite colors)
-    const colorInput = document.querySelector('#favoriteColorsParagraph')
+    const colorInputParent = document.querySelector('#favoriteColorsParagraph')
 
-    //adding another input color to colorInput's children elements
+    //adding another input color to colorInputParent's children elements
     const inputColorToAppend = document.createElement('input')
     inputColorToAppend.setAttribute('type', 'color')
     inputColorToAppend.setAttribute('name', 'favoriteColors')
@@ -111,7 +113,7 @@ const addColor = function() {
     //creating some space between color inputs
     inputColorToAppend.style.marginLeft = '.3rem'
 
-    colorInput.appendChild(inputColorToAppend)
+    colorInputParent.appendChild(inputColorToAppend)
 
 }
 
@@ -121,11 +123,11 @@ const resetFavoriteColors = function(){
 
     //getting the favoriteColors paragraph (this is the part
     //of the form where we ask for favorite colors)
-    const colorInput = document.querySelector('#favoriteColorsParagraph')
+    const colorInputParent = document.querySelector('#favoriteColorsParagraph')
     
-    //emptying the colorInput of all of its children
-    while (colorInput.hasChildNodes()) {
-        colorInput.removeChild(colorInput.firstChild)
+    //emptying the colorInputParent of all of its children
+    while (colorInputParent.hasChildNodes()) {
+        colorInputParent.removeChild(colorInputParent.firstChild)
     }
 
     //recreating the label for the favorite color input
@@ -133,8 +135,8 @@ const resetFavoriteColors = function(){
     colorInputLabel.setAttribute('for', 'favoriteColors')
     colorInputLabel.textContent = 'Favorite colors:'
 
-    //appending the colorInputLabel to the favorite color input
-    colorInput.appendChild(colorInputLabel)
+    //appending the colorInputLabel to the favorite color input parent
+    colorInputParent.appendChild(colorInputLabel)
 
     //adding a color to the favorite color input
     addColor()
