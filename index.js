@@ -55,8 +55,6 @@ const renderListItem = function(text, childrenToAppend) {
 //age and color (which is a node list of input colors)
 const renderList = function (name, age, colors) {
 
-    debugger
-
     //creating name list item
     const nameItem = renderListItem(`Name: ${name}`)
 
